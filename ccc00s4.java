@@ -1,0 +1,35 @@
+import java.io.*;
+
+public class ccc00s4 {
+    public static void main(String[] args) {
+        BufferedReader in = new BufferedReader(new InputStreamReader (System.in));
+
+        try {
+            int d = Integer.parseInt(in.readLine());
+            int[] info = new int [d+1];
+            for(int i = 0 ; i <= d ; i ++) {
+                info[i]=Integer.MAX_VALUE;
+            }
+            info[0] = 0;
+            int c = Integer.parseInt(in.readLine());
+
+            for(int i = 0 ; i <c ; i ++) {
+                int power = Integer.parseInt(in.readLine());
+                for(int i2 = 0 ; i2 <=d-power; i2++) {
+                    if(info[i2]!=Integer.MAX_VALUE) {
+                        info[i2+power]=Math.min(info[i2]+1, info[i2+power]);
+                    }
+                }
+            }
+
+            if(info[d] == Integer.MAX_VALUE) {
+                System.out.println("Roberta acknowledges defeat.");
+            }else {
+                System.out.println("Roberta wins in " + info[d]+ " strokes.");
+            }
+        }
+        catch(Exception e) {
+
+        }
+    }
+}
